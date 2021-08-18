@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles.css"/>
+    
+    <body>
+        {{menu}}
+        <h1>Add Movie to Collection</h1>
+        <div>
+            <form action="/movies" method="POST">
+                <label for="title">Title: </label>
+                <input id="title" type="text" name="title"/>
+                <label for="imgUrl">Image URL: </label>
+                <input id="imgUrl" type="url" name="imgUrl"/>
+                <label for="genre">Genre: </label>
+                <select name="genre">
+                    <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Romance">Romance</option>
+                </select>
+                <label for="description">Description: </label>
+                <textarea id="description" rows="10" cols="30" name="description"></textarea>
+                <input type="submit" value="Add"/>
+            </form>
+        <div>
+        <h1>My Movie Collection</h1>
+        <div>
+            {{movies}}
+                <form action="/movies/delete-movie" method="POST">
+                    <h3>Title: {{title}}</h3>
+                    <img src="{{imgUrl}}" style="height: 100px; width: 100px;"/>
+                    <input type="hidden" name="id" value="{{id}}"/>
+                    <a href="/movies/{{id}}">Details</a>
+                    <input type="submit" value="Delete"/>
+                </form>
+            {{/movies}}
+        </div>
+    </body>
+</html>
